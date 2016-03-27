@@ -2,9 +2,7 @@
  * Created by jj on 2015/1/16.
  */
 $(function(){
-  
         $('div[name=btn]').on('click',function  (obj) {
-            console.log(11)
             $.ajax({
                type: 'post',
                url: 'dologin' ,

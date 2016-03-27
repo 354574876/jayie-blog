@@ -1,18 +1,19 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('serve-favicon');
+var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-//var logger = require('./log').logger;
+var bodyParser   = require('body-parser');
+//var logger     = require('./log').logger;
 
 
-var router = require('./routes/index');
-var config = require("./config");
+var router       = require('./routes/index');
+var config       = require("./config");
 
-var users = require('./routes/users');
-var userList = require('./routes/user');
-var ejs = require('ejs');
+var users        = require('./routes/users');
+var userList     = require('./routes/user');
+var ejs          = require('ejs');
+var routerConfig = require('./app');
 
 var app = express();
 
