@@ -1,0 +1,15 @@
+CACHE MANIFEST
+#v1.0
+
+#要缓存的文件
+CACHE:
+/javascripts/semantic.js
+/stylesheets/semantic.min.css
+#只有在线情况下才能访问的资源,不会被缓存
+NETWORK:
+
+#如果访问第一个资源失败，那么就用第二个资源来替代他。
+#下面表示如果访问根目录下任何一个资源失败了，那么就去访问404
+FALLBACK
+/  /404.html
+

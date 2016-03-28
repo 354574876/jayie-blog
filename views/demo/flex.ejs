@@ -1,56 +1,132 @@
 <!DOCTYPE html>
-<html>
+<!-- <html  manifest = "/cache.manifest"> -->
+<html >
   <head>
     <%include ../_file%>
+    <style>
+        .flex{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .box{width: 200px;height: 200px;border:1px solid #3c4f5d;margin:0 5px;}
+    </style>
   </head>
   <body>
-    <div class="ui grid">
-    <div class="ten wide column">
-    <div class="ui small piled feed segment">
-    <h4 class="ui header">我的活动</h4>
-    <div class="event">
-    <div class="label">
-    <img src="/images/demo/avatar2.jpg" pagespeed_url_hash="437283272" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-    </div>
-    <div class="content">
-    <div class="date">
-    一个月前
-    </div>
-    <div class="summary">
-    为<a href="http://www.icoolxue.com" target="_blank">爱酷学习网</a>增加视频教程订阅功能。
-    </div>
-    </div>
-    </div>
-    <div class="event">
-    <div class="label">
-    <i class="circular pencil icon"></i>
-    </div>
-    <div class="content">
-    <div class="date">
-    3天前
-    </div>
-    <div class="summary">
-    为爱酷学习网增加最新评论功能。
-    </div>
-    <div class="extra text">
-    为爱酷学习网设计Logo。
-    </div>
-    </div>
-    </div>
-    <div class="event">
-    <div class="label">
-    <i class="circular photo icon"></i>
-    </div>
-    <div class="content">
-    <div class="date">
-    3天前
-    </div>
+    <div class ="ui grid" style="margin-top: 15px;">
+        <div class="three wide column"></div>
+        <div class ="ten wide column">
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <div class="ui form">
+                      <div class="field">
+                        <div class="ui buttons">
+                          <button class="ui button" id="Cancel">Cancel</button>
+                          <div class="or"></div>
+                          <button class="ui positive button" id="Fresh">Fresh</button>
+                        </div>
+                        <div id="inputText"  contentEditable="true" style="padding: 10px;height: 300px;overflow: auto;background-color: #272822;color:#4E9AFF"></div>
+                      </div>
+                    </div>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui message" style="height: 335px;overflow: auto;">
+                      <div class="header">结果</div>
+                      <ul class="list" id="result">
+                        
+                      </ul>
+                    </div>
+                </div>
+            </div>
 
-
+        </div>
+        <div class="three wide column">
+            
+        </div>
     </div>
-    </div>
-    </div>
+    <div style="width: 0;height: 0;border-width: 20px;border-style: solid;border-color: transparent transparent red transparent;"></div>
+    <div class="flex">
+        <div class="box">a</div>
+        <div class="box">b</div>
+        <div class="box">c</div>
     </div>
   </body>
- 
+ <script>
+
+     var $Fresh  = $('#Fresh');
+     var $Cancel = $('#Cancel');
+     var $inputText = $('#inputText');
+     var $result = $('#result');
+     $Cancel.on('click',function(ev){
+        $inputText.text('');
+        $result.html('');
+     })
+     $Fresh.on('click',function(ev){
+        Doto();
+     })
+     document.onkeydown = function (ev) {
+        var ev = ev || window.event;
+        if(ev.ctrlKey && ev.keyCode == 13){
+           Doto();
+           ev.returnValue = false;
+        }
+
+     }
+
+     function Doto(){
+        $result.html('');
+        eval($inputText.text());
+
+     }
+
+     function printf(str){
+        $result.append('<li>'+str+'</li>')
+     }
+
+     var Event = {
+        BindEvents:function(element, type, handler){
+            if (element.addEventListener) {
+                //事件类型、需要执行的函数、是否捕捉
+                element.addEventListener(type, handler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + type, function() {
+                    handler.call(element);
+                });
+            } else {
+                element['on' + type] = handler;
+            }
+        },
+
+        unBindEvents:function(element, type, handler){
+            if(element.removeEventListener){
+                element.removeEventListener(type,handler,false);
+            }else if(element.disattachEvent){
+                element.disattachEvent('on' + type,handler)
+            }else{
+                element['on'+type] = null;
+            }
+        },
+        //阻止事件
+        stopPropogation:function(ev){
+            if(ev.stopPropagation){
+                ev.stopPropagation();
+            }else{
+                ev.cancelBubble = true;
+            }
+        },
+
+        //取消默认事件
+        preventDefault:function(ev){
+            if(ev.preventDefault){
+                ev.preventDefault();
+            }else{
+                event.returnValue = false;
+            }
+        },
+
+        getTarget:function(ev){
+            return ev.target || ev.srcElement;
+        }
+     }
+ </script>
 </html>
+>>>>>>> Stashed changes

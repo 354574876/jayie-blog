@@ -3,12 +3,12 @@ var router = express.Router();
 var config = require('../config');
 var user = require('../models/User').User;
 var Logger = require('tracer').colorConsole();
-
+ 
 var userModel = new user();
 	
 exports.index = function(req, res){  
   res.render("index",
-  	{"title":"test","layout":false,"comments":[
+  	{"title":"个人网络日志","layout":false,"comments":[
 	  	{"user":"gainover","content":"test1"},
 	  	{"user":"zongzi","content":"test2"},
 	  	{"user":"maomao","content":"test3"}
@@ -36,6 +36,8 @@ exports.dologin = function  (req , res ) {
       if(val.success){
         //res.send(val);
         res.redirect('/welcome?id='+val.data[0].name);
+      }else{
+        res.send(val);
       }
     })
 }
@@ -43,3 +45,15 @@ exports.dologin = function  (req , res ) {
 exports.flex = function(req, res){
   res.render('demo/flex', { title: 'flex 布局'});
 };
+
+exports.picese = function(req,res){
+  res.render('picese',{title:'片段'});
+}
+
+exports.react = function(req,res){
+  res.render('react',{title:'react'});
+}
+
+exports.Qunit = function(req,res){
+  res.render('demo/Qunit',{title:'Qunit'});
+}
