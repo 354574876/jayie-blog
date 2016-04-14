@@ -1,19 +1,21 @@
-var express      = require('express');
-var path         = require('path');
-var favicon      = require('serve-favicon');
-var logger       = require('morgan');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-//var logger     = require('./log').logger;
+var bodyParser = require('body-parser');
+//var logger = require('./log').logger;
 
 
-var router       = require('./routes/index');
-var config       = require("./config");
 
-var users        = require('./routes/users');
-var userList     = require('./routes/user');
-var ejs          = require('ejs');
-var routerConfig = require('./app');
+
+var router = require('./routes/index');
+var config = require("./config");
+
+var users = require('./routes/users');
+var userList = require('./routes/user');
+var ejs = require('ejs');
+
 
 var app = express();
 
@@ -28,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-
 //静态文件要访问的目录，例如index.ejs.里面的js文件src指向的就是'public'目录
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -41,9 +42,11 @@ app.get("/login",router.login);
 app.post("/dologin",router.dologin);
 app.get('/welcome',router.welcome);
 app.get('/demo/flex',router.flex);
+app.get('/picese',router.picese);
+app.get('/react',router.react);
+app.get('/demo/Qunit',router.Qunit);
 app.get('/getuser' ,userList.getUser);
 app.get('/nologin/:no',function(req,res){
-    console.log(req.params);
     res.send('正在请求'+req.params)             //req.params={no:'输入的值'}
 })
 // catch 404 and forward to error handler

@@ -2,17 +2,11 @@ var mongoose = require('mongoose');
 var Logger = require('tracer').colorConsole();
 var _ = require('underscore');
 var result = require('../config');
-/*Logger.log('hello');
-Logger.trace('trace');
-Logger.debug('debug');
-Logger.info('info');
-Logger.warn('warn');
-Logger.error('error');*/
-//mongoose.connect('mongodb://localhost:27017/horicall_db');
+
 var db = mongoose.createConnection('mongodb://localhost:27017/horicall_db'); //创建一个数据库连接
 
 db.on('error', function(error){
-    Logger.error(error);
+    //Logger.error(error);
 });
 
 // Schema 结构
@@ -23,7 +17,7 @@ var userSchema = new mongoose.Schema({
 },{collection:'user'});
 
 var User = db.model('user', userSchema);
-User.count({name:'junjie'},function(err, thor) {
+User.count({name:'junjie1'},function(err, thor) {
   if (err) return console.error(err);
   if(thor>0){
     User.find(function(res,res){
@@ -34,8 +28,8 @@ User.count({name:'junjie'},function(err, thor) {
   }
 });
 
-function UserModel (){
-
+function UserModel (option){
+	this.option = option;
 }
 UserModel.prototype.checkUser = function(data,callback){
 	var search = data?_.isObject(data)?data:{}:{},

@@ -12,5 +12,5 @@ router.get('/welcome', function(req, res) {
 module.exports = router;*/
 //	localhost:3000/getuser/
 exports.getUser = function(req, res){  
-  console.log(UserModel.User); 
+  console.log(UserModel.User);
 };

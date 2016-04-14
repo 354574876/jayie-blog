@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../_file%>
+    <link rel='stylesheet' href="/stylesheets/qunit.css"></link>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+  </body>
+<script src="/javascripts/lib/qunit.js"></script>
+<script>
+    QUnit.test( "multiple call done()", function( assert ) {
+      assert.expect( 3 );
+      var done = assert.async( 3 );
+     
+      setTimeout(function() {
+        assert.ok( true, "first call done." );
+        done();
+      }, 500 );
+     
+      setTimeout(function() {
+        assert.ok( true, "second call done." );
+        done();
+      }, 500 );
+     
+      setTimeout(function() {
+        assert.notOk( true, "third call done." );
+        done();
+      }, 500 );
+    });
+</script>
+
+</html>

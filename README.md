@@ -1,4 +1,7 @@
 # jayie-blog
-personal blog with m+e+a+m
+个人博客系统，能够支持js调试区域。
 
-通过mongodb express reactjs node 构建的个人博客系统和在线聊天系统
+应用框架：
+  前端：自动化构建（webpack）+ ReactJs(虚拟DOM,组件化开发方式) ;
+  后端：nodejs + express
+  数据库：mongoDB
