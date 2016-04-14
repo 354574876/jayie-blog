@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', config.views);
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(bodyParser.json());//解析客户端请求，例如req.body.name
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
