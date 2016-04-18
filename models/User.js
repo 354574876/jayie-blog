@@ -3,7 +3,7 @@ var Logger = require('tracer').colorConsole();
 var _ = require('underscore');
 var result = require('../config');
 
-var db = mongoose.createConnection('mongodb://localhost:27017/horicall_db'); //创建一个数据库连接
+var db = mongoose.createConnection('mongodb://jayie_horicall_db:jayie_horicall_db@114.215.80.196:27017/horicall_db'); //创建一个数据库连接
 
 db.on('error', function(error){
     //Logger.error(error);

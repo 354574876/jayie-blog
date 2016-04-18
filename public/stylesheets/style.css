@@ -2,7 +2,7 @@ body{
     background: url(../images/background.png);
     overflow-x: hidden;
     color: rgba(0,0,0,0.6);
-    font-size: 14px;
+    font: 12px/20px "Microsoft YaHei","微软雅黑","SimSun","宋体","Arial Narrow",HELVETICA;
 }
 .logo{
     color: #009FDA;
