@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var Logger = require('tracer').colorConsole();
 var _ = require('underscore');
-var result = require('../config');
+var config = require('../config');
 
-var db = mongoose.createConnection('mongodb://jayie_horicall_db:jayie_horicall_db@114.215.80.196:27017/horicall_db'); //创建一个数据库连接
+var db = mongoose.createConnection(config.mongodb_connect); //创建一个数据库连接
 
 db.on('error', function(error){
     //Logger.error(error);
@@ -17,7 +17,7 @@ var userSchema = new mongoose.Schema({
 },{collection:'user'});
 
 var User = db.model('user', userSchema);
-User.count({name:'junjie1'},function(err, thor) {
+User.count({name:'junjie'},function(err, thor) {
   if (err) return console.error(err);
   if(thor>0){
     User.find(function(res,res){
