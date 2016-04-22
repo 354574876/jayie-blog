@@ -11,7 +11,7 @@
 	            <div class="twelve wide column main-content">	             
 	                <div class="ui attached message">
 	                    <div class="header">
-	                       欢迎 <%= name%>光临
+	                       欢迎 <%= req.query.id||'hello'%>光临
 	                    </div>
 	                    <h1><a href="/index">注销</a></h1>
 	                    <p></p>

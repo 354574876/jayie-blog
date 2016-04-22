@@ -4,19 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var logger = require('./log').logger;
-
-
-
 
 var router = require('./routes/index');
 var config = require("./config");
-
-var users = require('./routes/users');
-var userList = require('./routes/user');
 var ejs = require('ejs');
-
-
 var app = express();
 
 // view engine setup
@@ -33,29 +24,32 @@ app.use(cookieParser());
 //静态文件要访问的目录，例如index.ejs.里面的js文件src指向的就是'public'目录
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', router);
-app.use('/users', users);
-app.post('/index', router.dologin);
-app.get("/",router.index);
-app.get("/index",router.index);
-app.get("/login",router.login);
-app.post("/dologin",router.dologin);
-app.get('/welcome',router.welcome);
-app.get('/demo/flex',router.flex);
-app.get('/picese',router.picese);
-app.get('/react',router.react);
-app.get('/demo/Qunit',router.Qunit);
-app.get('/getuser' ,userList.getUser);
-app.get('/nologin/:no',function(req,res){
-    res.send('正在请求'+req.params)             //req.params={no:'输入的值'}
-})
+for(var i=0;i<config.router.length;i++){
+    (function(listNum){
+        var     
+            routerObj = config.router[listNum],
+            type      = routerObj.type
+            ;
+        app.get(routerObj.url,function(req,res){
+            res.render(routerObj.view, { title: routerObj.title,res:res,req:req});
+       })     
+    })(i)
+}
+for(var j=0;j<config.ajaxApi.length;j++){
+    (function(jNum){
+        var     
+            ajaxObj = config.ajaxApi[jNum]
+            ;
+        app.post(ajaxObj.url,router[ajaxObj.api]);   
+    })(j)
+}
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
- 
+
 // error handlers
 
 // development error handler
@@ -84,11 +78,5 @@ app.use(function(req, res, next){
     res.locals.staticPath = config.staticPath;
     //res.locals.userCurrent = req.session.user;
     next();
-});
-
- //app.get('/login',router.login);
-// app.post('/login',routes.doLogin);
-// app.get('/logout',routes.logout);
-
- 
+}); 
 module.exports = app;
