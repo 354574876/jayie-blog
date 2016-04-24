@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', config.views);
 
 // uncomment after placing your favicon in /public
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/src/img/favicon.ico'));
 app.use(bodyParser.json());//解析客户端请求，例如req.body.name
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 //静态文件要访问的目录，例如index.ejs.里面的js文件src指向的就是'public'目录
 app.use(express.static(path.join(__dirname, 'public')));
-
+console.log(path.join(__dirname, 'public'));
 for(var i=0;i<config.router.length;i++){
     (function(listNum){
         var     

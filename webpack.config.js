@@ -5,8 +5,8 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 
 //定义文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
-var APP_PATH = path.resolve(ROOT_PATH, 'app/index.js');
-var BUILD_PATH = path.resolve(ROOT_PATH, 'dist/js');
+var APP_PATH = path.resolve(ROOT_PATH, 'public/src/js/app.js');
+var BUILD_PATH = path.resolve(ROOT_PATH, 'public/dist/js');
 var MODULE_PATH = path.resolve(ROOT_PATH, 'node_modules');
 
 module.exports = {

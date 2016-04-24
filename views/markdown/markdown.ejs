@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <%include ../_file%>
+  <link rel="stylesheet" href="/plugins/markdown/css/editormd.min.css">
+  </head>
+  <body>
+  	<div class="ui container">
+        <%include ../_head%>
+        <div class="ui main container" style="margin-top:60px">
+             <div id="test-editormd">
+                 <textarea style="display:none;">### Settings
+                 </textarea>
+             </div>
+        </div>
+  	</div>
+  </body>
+ <script src="/plugins/markdown/js/editormd.min.js"></script>
+<script type="text/javascript">
+    var testEditor;
+    $(function() {
+      $.get("/plugins/markdown/test.md", function(md){
+        testEditor = editormd("test-editormd", {
+          width  : "90%",
+          height : 720,
+          path   : '/plugins/markdown/js/',
+          markdown : md,
+          codeFold : true,
+          searchReplace : true,
+          saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
+          //watch : false,
+          htmlDecode : "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
+          emoji : true,
+          taskList : true,
+          tocm            : true,         // Using [TOCM]
+          tex : true,                     // 开启科学公式 TeX 语言支持，默认关闭
+          //previewCodeHighlight : false,  // 关闭预览窗口的代码高亮，默认开启
+          flowChart : true,  
+          sequenceDiagram : true,         // 同上
+          onload : function() {
+            console.log("onload =>", this, this.id, this.settings);
+          }
+        });
+      });
+    });
+</script>
+</html>
+
