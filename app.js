@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var router = require('./routes/index');
+var router = require('./routes/index').obj;
 var config = require("./config");
 var ejs = require('ejs');
 var app = express();
@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 //静态文件要访问的目录，例如index.ejs.里面的js文件src指向的就是'public'目录
 app.use(express.static(path.join(__dirname, 'public')));
-console.log(path.join(__dirname, 'public'));
+
 for(var i=0;i<config.router.length;i++){
     (function(listNum){
         var     
@@ -40,6 +40,7 @@ for(var j=0;j<config.ajaxApi.length;j++){
         var     
             ajaxObj = config.ajaxApi[jNum]
             ;
+            console.log(ajaxObj.url,router,ajaxObj.api)
         app.post(ajaxObj.url,router[ajaxObj.api]);   
     })(j)
 }

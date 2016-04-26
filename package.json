@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "express": "^4.10.8",
+    "glob": "^7.0.3",
     "jsx-loader": "^0.13.2",
     "tracer": "^0.8.3",
     "url-loader": "^0.5.7",

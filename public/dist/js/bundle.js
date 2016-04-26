@@ -1,8 +1,1 @@
-webpackJsonp([0,1],[
-/* 0 */
-/***/ function(module, exports) {
-
-	console.log(111);
-
-/***/ }
-]);
+webpackJsonp([1,0],[function(i,n,t){t(1)},function(i,n){!function(){var i=window.Jayie||{};i.utils={getUrlData:function(i){var n=window.location.hash.split("?")[1],t=n&&n.length>0?n.split("&"):[0],o={};if(t[0]){for(var a=0;a<t.length;a++)o[t[a].split("=")[0]]=t[a].split("=")[1];return o[i]}},postDataWithToken:function(i,n,t,o){var a;o=void 0==o?!0:o,_.isFunction(n)?(a={},o=void 0==t?!0:t,t=n):a=n,$.ajax({url:i,type:"post",data:a,async:o,success:function(i){t(i)}})}},window.Jayie=window.Jayie||i}()}]);

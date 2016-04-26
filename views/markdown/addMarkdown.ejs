@@ -41,19 +41,7 @@ function test() {
   	</div>
   </body>
  <script src="/plugins/markdown/js/editormd.min.js"></script>
-<script type="text/javascript">
-  $(function() {
-    var testEditor;
-    testEditor = editormd("test-editormd", {
-      width   : "100%",
-      height  : 340,
-      syncScrolling : "single",
-      path    : "/plugins/markdown/js/"
-    });
-    $('#modalShow').click(function(){
-      $('.ui.modal').modal('show')
-    })
-  });
-</script>
+
+<script type="text/javascript" src="/dist/js/markdown/markdown.js"></script>
 </html>
 
