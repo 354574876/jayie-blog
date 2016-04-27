@@ -24,6 +24,12 @@ var postUrl = {
     articalService.insertArtical(req.body,function(val){
       res.send(val);
     })
+  },
+  getArticalList:function(req,res){
+    var articalService = new artical;
+    articalService.getArticalList(req.body,function(val){
+      res.send(val);
+    })
   }
 }
 

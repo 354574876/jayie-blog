@@ -33,7 +33,7 @@ Artical.prototype = {
 			callback(arguments);
 		})
 	},
-	getArticalList:function(callback){
+	getArticalList:function(query,callback){
 		artical.find(function(err, doc){
 			callback = callback || function(){};
 			callback(doc);

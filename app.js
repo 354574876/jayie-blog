@@ -40,7 +40,6 @@ for(var j=0;j<config.ajaxApi.length;j++){
         var     
             ajaxObj = config.ajaxApi[jNum]
             ;
-            console.log(ajaxObj.url,router,ajaxObj.api)
         app.post(ajaxObj.url,router[ajaxObj.api]);   
     })(j)
 }
