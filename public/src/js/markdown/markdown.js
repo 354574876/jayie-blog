@@ -10,15 +10,16 @@ $('#modalShow').click(function(){
 	$('.ui.modal').modal('show')
 })
 $('#submitBlog').click(function(){
-	console.log(Jayie);
 	var data = {
 		artical_title:$('input[name=title]').val(),
 		artical_markdown:testEditor.getMarkdown(),
 		artical_html:testEditor.getHTML(),
-		artical_date:new Date().format("yyyy-MM-dd HH:mm:ss")
+		artical_date:new Date().Format("yyyy-MM-dd HH:mm:ss"),
+		artical_remark:$('input[name=remark]').val()
 	}
 	Jayie.utils.postDataWithToken('/artical/insertArtical',data,function(res){
 		$('.ui.modal').modal('hide');
 		$('input[name=title]').val('');
+		$('input[name=remark]').val('');
 	})
 })
