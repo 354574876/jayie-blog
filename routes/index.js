@@ -30,6 +30,14 @@ var postUrl = {
     articalService.getArticalList(req.body,function(val){
       res.send(val);
     })
+  },
+
+  getArticalById:function(req,res){
+    var articalService = new artical;
+    Logger.debug(req);
+    articalService.getArticalById(req.body.id,function(val){
+      res.send(val);
+    })
   }
 }
 

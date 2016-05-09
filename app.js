@@ -32,7 +32,7 @@ for(var i=0;i<config.router.length;i++){
             ;
         app.get(routerObj.url,function(req,res){
             res.render(routerObj.view, { title: routerObj.title,res:res,req:req});
-       })     
+       })
     })(i)
 }
 for(var j=0;j<config.ajaxApi.length;j++){

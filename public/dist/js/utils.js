@@ -1,4 +1,4 @@
-webpackJsonp([5,6],[
+webpackJsonp([6,7],[
 /* 0 */
 /***/ function(module, exports) {
 
@@ -25,7 +25,7 @@ webpackJsonp([5,6],[
 			};
 		},
 		getUrlData: function getUrlData(name) {
-			var str = window.location.hash.split('?')[1],
+			var str = window.location.href.split('?')[1],
 			    arr = str ? str.length > 0 ? str.split('&') : [0] : [0],
 			    obj = {};
 			if (arr[0]) {
@@ -48,6 +48,7 @@ webpackJsonp([5,6],[
 			} else {
 				d = b;
 			}
+			console.log(a, d, type);
 			$.ajax({
 				url: a,
 				type: "post",

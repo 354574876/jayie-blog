@@ -20,7 +20,7 @@
 			}
 		},
 		getUrlData: function (name) {
-		    var str = window.location.hash.split('?')[1],
+		    var str = window.location.href.split('?')[1],
 		        arr = str ? str.length > 0 ? str.split('&') : [0] : [0],
 		        obj = {};
 		    if (arr[0]) {
@@ -44,6 +44,7 @@
             }else{
                 d= b;
             }
+            console.log(a,d,type)
             $.ajax({
                 url: a,
                 type: "post",
