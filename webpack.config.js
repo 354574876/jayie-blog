@@ -43,9 +43,11 @@ module.exports = {
         //加载器配置
         loaders: [
             { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.js$/, loader: 'jsx-loader?harmony' },
             { test: /\.scss$/, loader: 'style!css!sass?sourceMap'},
-            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
+            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
+            { test: /\.jsx?$/, loaders: ['jsx?harmony']},
+            //{ test: /\.js?$/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/ },
+            { test: /\.js$/, exclude: /node_modules/, loader: 'babel',query: {presets: ['es2015']}},
         ]
     },
     //其它解决方案配置
