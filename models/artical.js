@@ -15,7 +15,8 @@ var userSchema = new mongoose.Schema({
 	artical_title:'',
 	artical_date:'',
 	artical_markdown:'',
-	artical_html:''
+	artical_html:'',
+	artical_remark:''
 },{collection:'horicall_artical'});
 
 var artical = db.model('horicall_artical', userSchema);

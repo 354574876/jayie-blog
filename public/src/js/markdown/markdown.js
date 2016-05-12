@@ -5,6 +5,7 @@ testEditor = editormd("test-editormd", {
 	syncScrolling : "single",
 	path    : "/plugins/markdown/js/",
 	saveHTMLToTextarea : true,
+	emoji:true
 });
 $('#modalShow').click(function(){
 	$('.ui.modal').modal('show')
@@ -13,7 +14,7 @@ $('#submitBlog').click(function(){
 	var data = {
 		artical_title:$('input[name=title]').val(),
 		artical_markdown:testEditor.getMarkdown(),
-		artical_html:testEditor.getHTML(),
+		artical_html:$('.editormd-preview-container').html(),
 		artical_date:new Date().Format("yyyy-MM-dd HH:mm:ss"),
 		artical_remark:$('input[name=remark]').val()
 	}
