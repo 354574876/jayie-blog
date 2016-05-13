@@ -18,7 +18,6 @@ var userSchema = new mongoose.Schema({
 	artical_html:'',
 	artical_remark:''
 },{collection:'horicall_artical'});
-
 var artical = db.model('horicall_artical', userSchema);
 
 function Artical (option){
@@ -38,7 +37,7 @@ Artical.prototype = {
 		artical.find(function(err, doc){
 			callback = callback || function(){};
 			callback(doc);
-		})
+		}).sort({'_id':-1})
 	},
 	getArticalById:function(id,callback){
 		artical.findById(id,function(err, doc){
@@ -53,7 +52,8 @@ Artical.prototype = {
 		})
 	},
 	updateArtical:function(id,obj,callback){
-		artical.update({'_id':id},obj,{},function(err,doc){
+		delete obj._id;
+		artical.findByIdAndUpdate(id,{$set :obj},function(err,doc){
 			callback = callback || function(){};
 			callback(doc);
 		})

@@ -37,6 +37,13 @@ var postUrl = {
     articalService.getArticalById(req.body.id,function(val){
       res.send(val);
     })
+  },
+
+  updateArtical:function(req,res){
+    var articalService = new artical;
+    articalService.updateArtical(req.body._id,req.body,function(val){
+      res.send(val);
+    })
   }
 }
 
