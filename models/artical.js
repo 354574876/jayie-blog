@@ -29,7 +29,6 @@ Artical.prototype = {
 	insertArtical:function(data,callback){
 		var obj = new artical(data);
 		obj.save(function(){
-			Logger.debug(arguments);
 			callback(arguments);
 		})
 	},

@@ -5,6 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// var webpack = require('webpack')
+// var webpackDevMiddleware = require('webpack-dev-middleware');
+// var webpackHotMiddleware = require('webpack-hot-middleware');
+// var compiler = webpack(config)
+// app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+// app.use(webpackHotMiddleware(compiler))
+
+
 var router = require('./routes/index').obj;
 var config = require("./config");
 var ejs = require('ejs');
@@ -31,6 +39,7 @@ for(var i=0;i<config.router.length;i++){
             type      = routerObj.type
             ;
         app.get(routerObj.url,function(req,res){
+            console.log("Cookies: ", req.cookies)
             res.render(routerObj.view, { title: routerObj.title,res:res,req:req});
        })
     })(i)

@@ -20,7 +20,7 @@ Jayie.utils.postDataWithToken('/artical/getArticalList',function(res){
          tpl += '<div class="ui existing segment" >'+
             '<h4 class="ui header"><a href=/markdown/detail?_id='+val._id+'>'+val.artical_title+'</a></h4>'+
             '<p>'+val.artical_remark+'</p>'+
-            '<a class="ui teal" href=/markdown/addMarkdown?_id='+val._id+'>>>>>编辑</a>'+
+            //'<a class="ui teal" href=/markdown/addMarkdown?_id='+val._id+'>>>>>编辑</a>'+
           '</div>'
        })
     $('#contentList').html(tpl);

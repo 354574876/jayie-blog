@@ -27,7 +27,6 @@ function entries (globPath) {
     return entries;
 }
 ;
-
 module.exports = {
     //插件项
     plugins: [commonsPlugin],
